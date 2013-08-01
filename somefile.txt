@@ -5,3 +5,4 @@ bbb
 c
 d
 e
+aggiunta riga per test stash and merge
