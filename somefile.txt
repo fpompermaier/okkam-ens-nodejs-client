@@ -1,9 +1,0 @@
-a
-b
-bb
-bbb
-c
-d
-e
-aggiunta riga per test stash and merge
-eee
