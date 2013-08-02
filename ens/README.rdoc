@@ -1,6 +1,0 @@
-= ens
-
-Describe your project here
-
-:include:ens.rdoc
-

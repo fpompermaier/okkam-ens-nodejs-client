@@ -1,5 +1,0 @@
-= ens
-
-Generate this with
-    ens rdoc
-After you have described your command line interface
