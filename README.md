@@ -7,6 +7,7 @@ Pre-requisites
 ========
 
 **Install node-js, npm and optimist module before:**
+
 	sudo apt-get install nodejs	
 	sudo apt-get install npm	
 	sudo npm install optimist
