@@ -1,0 +1,12 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    gli (2.7.0)
+    hacer (0.0.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  gli
+  hacer
