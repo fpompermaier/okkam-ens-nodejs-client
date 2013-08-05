@@ -3,9 +3,9 @@
 var host = 'api.okkam.org';
 var port = 80;
 var http = require('http');
-var name = 'Flavio Pompermaier';
+var query = 'Flavio Pompermaier';
 var usage = 'Usage: $0 [-v|-a|-e|-r|-d] [--type [person|location|organization]]';
-usage += ' [--matching-module=[fbem|jm]] --name \"keywords\"'
+usage += ' [--matching-module=[fbem|jm]] --query \"keywords\"'
 querystring = require('querystring')
 optimist = require('optimist')
 
@@ -22,11 +22,11 @@ var argv = optimist
 			.alias('d', 'show-attributes')
 				.describe('d', 'Show entity\'s attributes details')
 				.describe('type', 'Set query entity type (default: any)')
-				.describe('name', 'Set query keywords')
+				.describe('query', 'Set ENS query (e.g. first_name=\"Barak\" last_name:\"Obama\"')
 				.describe('mm', 'Set query matching module (default: fbem)')
 			.default('type', 'any')
 			.default('mm', 'fbem')
-			.demand(['type','name','mm'])
+			.demand(['type','query','mm'])
 			.usage(usage)
 			.argv;
 var args = argv._;
@@ -55,15 +55,18 @@ console.log('\t Profile refs: '+ show_profile_references);
 console.log('\t Profile attr: '+ show_profile_attributes);
 //-------------------------------------------------------
 
-jsearch(argv.type, argv.name, argv.mm);
+jsearch(argv.type, argv.query, argv.mm);
 
-function jsearch(type, name, mm){
+function jsearch(type, query, mm){
 	
-	var	ensquery = 'QUERY{"'+name+'"} METADATA{entityType='+type+' matchingModule='+mm+'}';
+	// add double quotes for keywords queries
+	if(query.indexOf('"')==-1)
+		query = '"'+query+'"'
+	var	ensquery = 'QUERY{'+query+'} METADATA{entityType='+type+' matchingModule='+mm+'}';
 	var q = querystring.stringify({'q': ensquery, 'verbose' : 'true'});
 
 	//console.log('\n-----------------------------------');
-    console.log('\t Running jsearch for '+name+', type='+type+', mm='+mm);
+    console.log('\t Running jsearch for '+query+', type='+type+', mm='+mm);
 	console.log('\t q='+ensquery+'&verbose=true');
 	console.log('-----------------------------------');
 

@@ -19,20 +19,26 @@ Examples
 
 	./ens
 
-# Simplest query, with defaults
+# Simplest query, by keywords with defaults
 
 Shows only okkam ids (type->any and matching-module->fbem)
 
-	./ens --name "Paolo Bouquet"
+	./ens --query "Paolo Bouquet"
 
-# Specify type and matching module
+# Query by keywords with specific type and matching module
 
 Shows only okkam ids.
 
-	./ens --type person --name "Paolo Bouquet" --matching-module fbem
+	./ens --type person --query "Paolo Bouquet" --matching-module fbem
+
+# Query by attributes
+
+Shows only okkam ids. Remember to escape double quotes with '\' character!
+
+	./ens --type person --query "first_name=\"Paolo\" last_name=\"Bouquet\" " --matching-module fbem
 	
 # Verbose mode (-v)
 
 Show all attributes
 
-	./ens -v --type person --name "Paolo Bouquet" --matching-module fbem
+	./ens -v --type person --query "Paolo Bouquet" --matching-module fbem
